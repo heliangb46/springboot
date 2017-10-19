@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+ 
+	<!-- 文件的最大行数2000行 -->
+    <module name="FileLength">
+        <property name="max" value="2000"/>
+        <property name="fileExtensions" value="java"/>
+    </module>
+	              	    
+	<module name="TreeWalker">
+	    
+		<!-- 段落缩进4个字符 -->
+		<property name="tabWidth" value="4"/>
+        <!--<property name="severity" value="warning"/>-->
+        
+        <!-- 定义全局常量的命名规则 -->
+        <module name="ConstantName">
+            <property name="format" value="log|^[a-zA-Z][a-zA-Z0-9_]*$"/>
+        </module>
+
+	    <!-- 方法长度不可以超过100行 -->
+	    <!-- tokens定义检查类型，分类: 类 CLASS_DEF, 接口 INTERFACE_DEF, 方法 METHOD_DEF, 构造函数CTOR_DEF -->
+	    <module name="MethodLength">
+		    <property name="severity" value="warning"/>
+		    <property name="max" value="200"/>
+		    <property name="tokens" value="CTOR_DEF,METHOD_DEF"/>
+		    <property name="countEmpty" value="false"/>
+	    </module>
+	      
+	    <!-- 行长度不可以超过150字符 -->
+	    <module name="LineLength">
+            <property name="max" value="150"/>
+        </module>
+        
+        <!-- 检查嵌套复杂度20层 -->
+        <module name="CyclomaticComplexity">
+			<property name="max" value="20"/>
+		</module>
+
+        <!-- 检查方法的javadoc的注释 -->
+		<module name="JavadocMethod">
+			<property name="scope" value="public"/>
+			<!-- 是否允许错误的参数声明,true为允许,缺省为不允许 -->
+			<property name="allowMissingParamTags" value="true"/>
+			<!-- 是否允许错误的错误声明,true为允许,缺省为不允许 -->
+			<property name="allowMissingThrowsTags" value="true"/>
+			<!-- 是否允许错误的返回类型声明,true为允许,缺省为不允许 -->
+			<property name="allowMissingReturnTag" value="true"/>
+		</module>
+		
+		<!-- 检查类或者接口的javadoc注释 -->
+        <module name="JavadocType"/>
+        
+        <!-- 检查类变量的注释 -->
+        <module name="JavadocVariable"/>
+        
+        <!-- 定义抽象类的命名规则 
+        <module name="AbstractClassName">   
+            <property name="format" value="^Abstract.*$|^.*$"/>   
+        </module>  -->
+             
+        <!-- 定义局部常量的命名规则 
+        <module name="LocalFinalVariableName">
+   					<property name="format" value="^[A_Z][A-Z0-9]*(_[A_Z0-9]+)*$"/>   
+        </module> -->
+        
+        <!-- 定义局部变量的命名规则 -->
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>   
+        </module>  
+
+        <!-- 定义方法名的命名规则 -->
+        <module name="MethodName">
+   			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>  
+        </module>
+        
+        <!-- 定义包名的命名规则 -->
+        <module name="PackageName">
+    		<property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/> 
+        </module>
+        
+        <!-- 定义参数名的命名规则 -->
+        <module name="ParameterName">
+         	<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>   
+        </module>  
+        
+        <!-- 定义静态变量的命名规则 -->
+        <module name="StaticVariableName"/>
+        
+        <!-- 定义类和接口的命名规则 -->
+        <module name="TypeName">
+     		<property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>   
+            <property name="tokens" value="CLASS_DEF,INTERFACE_DEF"/>   
+		</module>   
+
+        <!--  定义非静态成员变量的命名规则 -->
+        <module name="MemberName"/>
+        
+        <!--  必须导入类的完整路径，即不能使用*导入所需的类 -->
+        <module name="AvoidStarImport"/>
+        
+        <!--  检查是否从非法的包中导入了类 -->
+        <module name="IllegalImport"/>
+        
+        <!--  检查是否导入了不必显示导入的类 -->
+        <module name="RedundantImport"/>
+        
+        <!--  检查是否导入的包没有使用 -->
+        <module name="UnusedImports"/>
+        
+        <!--  定义最多有多少个参数 -->
+        <module name="ParameterNumber">
+	        <property name="max" value="20"/>   
+	        <property name="tokens" value="METHOD_DEF,CTOR_DEF"/> 
+        </module> 
+        
+        <!--  检查for iterator语句是否使用空格 -->
+        <module name="EmptyForIteratorPad"/>
+        
+				<!-- 检查运算符是否在应在同一行 -->
+        <module name="OperatorWrap"/>
+
+        <!-- 检查修饰符的顺序 -->
+        <module name="WhitespaceAfter"/>
+        
+        <!-- 检查修饰符的顺序 -->
+        <module name="ModifierOrder"/>
+        
+        <!-- 检查是否有多余的修饰符 -->
+        <module name="RedundantModifier"/>
+        
+        <!-- 检查是否有嵌套的代码块 -->
+        <module name="AvoidNestedBlocks"/>
+        
+        <!-- 检查是否有空代码块 -->
+        <module name="EmptyBlock"/>
+        
+        <!-- 检查是否应该使用括号的地方没有加括号 -->
+        <module name="NeedBraces"/>
+        
+        <!-- 检查是否在同一行初始化 
+        <module name="AvoidInlineConditionals"/>-->
+         
+        <!-- 检查在重写了equals方法后是否重写了hashCode方法 -->
+        <module name="EqualsHashCode"/>
+        
+        <!-- 魔鬼数字 -->
+        <module name="MagicNumber"/>
+        
+        <!-- 检查switch语句是否忘记了default标签 -->
+        <module name="MissingSwitchDefault"/>
+        
+        <!-- 检查是否抛出了多余的异常 -->
+        <module name="RedundantThrows"/>
+        
+        <!-- 检查是否有boolean使用冗余的地方 -->
+        <module name="SimplifyBooleanExpression"/>
+        
+        <!-- 检查是否在返回boolean值时是否有使用冗余的地方 -->
+        <module name="SimplifyBooleanReturn"/>
+        
+        <!-- 检查类是否被设计为可扩展的，如果是，则方法应该abstract、final或者是空的 
+        <module name="DesignForExtension"/>-->
+                
+        <!-- 只有私有构造器的类必须声明为final -->
+        <module name="FinalClass"/>
+                
+        <!-- 只定义了静态方法的类不应该定义一个公有的构造器 
+        <module name="HideUtilityClassConstructor"/>-->
+        
+        <!-- 检查接口是否只定义了变量而没有定义方法，因为接口应该用来描述一个类型，所以只定义变量而不定义方法是不恰当的 -->
+        <module name="InterfaceIsType"/>
+        
+        <!-- 检查变量是否对外部可见 -->
+        <module name="VisibilityModifier"/>
+        
+        <!-- 检查再定义数组时，采用java风格还是c风格 -->
+        <module name="ArrayTypeStyle"/>
+                  
+				<!-- 检查参数是否是常量 
+        <module name="FinalParameters"/>-->
+        
+        <!-- 检查初始化长整型变量时，数字後是加了大写字母'L'而不是小写字母'l' -->
+        <module name="UpperEll"/>
+        
+        <!-- 检查TODO注释 -->
+        <module name="TodoComment"/>
+        
+        <!-- 不合法使用System.out.print 
+        <module name="Regexp">
+            <property name="format" value="System.out.print"/>
+            <property name="message" value="bad practice of use System.exit"/>
+            <property name="illegalPattern" value="true"/>
+        </module>-->
+        
+        <!-- 不合法使用System.error.print -->
+        <module name="Regexp">
+            <property name="format" value="System.error.print"/>
+            <property name="message" value="bad practice of use System.exit"/>
+            <property name="illegalPattern" value="true"/>
+        </module>
+        
+        <!-- 不合法使用System.exit 
+        <module name="Regexp">
+            <property name="format" value="System.exit"/>
+            <property name="message" value="bad practice of use System.exit"/>
+            <property name="illegalPattern" value="true"/>
+        </module>-->
+        
+        <!-- 不合法使用printStackTrace
+        <module name="Regexp">
+            <property name="format" value="printStackTrace"/>
+            <property name="message" value="bad practice of use printStackTrace"/>
+            <property name="illegalPattern" value="true"/>
+        </module> -->
+        
+        <module name="EmptyStatement"/>
+        <module name="InnerAssignment"/>
+        <module name="IllegalInstantiation"/>
+        <!--<module name="HiddenField"/>-->
+        <module name="WhitespaceAround"/>
+        <module name="GenericWhitespace"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+                
+    </module>
+	<module name="Translation"/>
+</module>
